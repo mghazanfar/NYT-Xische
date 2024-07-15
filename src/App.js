@@ -2,7 +2,8 @@ import { ArticlesListPage } from './pages/articles-list.page';
 
 function App() {
   return (
-    <ArticlesListPage />
+    <div data-testid="app-container">
+    <ArticlesListPage /></div>
   );
 }
 

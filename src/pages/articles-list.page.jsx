@@ -5,9 +5,13 @@ import { ArticlesListContainer } from "../components/organisms/articles-list/art
 
 export const ArticlesListPage = () => {
   return (
-    <Box height={"100vh"} p={10}>
+    <Box height={"100vh"} p={10} data-testid="articles-page">
       <Header />
-      <PageTitle title="Most Popular Articles" boxProps={{ mt: 5 }} />
+      <PageTitle
+        title="Most Popular Articles"
+        boxProps={{ mt: 5 }}
+        data-testid="articles-page-title"
+      />
       <Box mt={3}>
         <ArticlesListContainer />
       </Box>

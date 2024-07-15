@@ -11,8 +11,16 @@ import {
 import { useState } from "react";
 
 export const Article = ({ article }) => {
-  const { title, media, des_facet, abstract, byline, org_facet, per_facet } =
-    article;
+  const {
+    title,
+    media,
+    des_facet,
+    abstract,
+    byline,
+    org_facet,
+    per_facet,
+    id,
+  } = article;
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -32,6 +40,7 @@ export const Article = ({ article }) => {
           height: 293,
           width: 440,
         };
+
   return (
     <>
       <Dialog
@@ -40,7 +49,12 @@ export const Article = ({ article }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title" variant="h4" fontWeight={800}>
+        <DialogTitle
+          id="alert-dialog-title"
+          variant="h4"
+          fontWeight={800}
+          data-testid={`article-detail-title-${title}`}
+        >
           {title}
         </DialogTitle>
         <DialogContent>
@@ -68,13 +82,13 @@ export const Article = ({ article }) => {
             Keywords:
           </Typography>
           {per_facet?.map((name) => (
-            <Typography>{name}</Typography>
+            <Typography key={name}>{name}</Typography>
           ))}
           {org_facet?.map((name) => (
-            <Typography>{name}</Typography>
+            <Typography key={name}>{name}</Typography>
           ))}
           {des_facet?.map((name) => (
-            <Typography>{name}</Typography>
+            <Typography key={name}>{name}</Typography>
           ))}
         </DialogContent>
         <DialogActions>
@@ -90,6 +104,7 @@ export const Article = ({ article }) => {
         borderBottom={"1px solid black"}
         pb={2}
         mb={2}
+        data-testid={`article-${id}`}
       >
         <img
           src={image.url}
@@ -113,7 +128,11 @@ export const Article = ({ article }) => {
             </Box>
           </Box>
           <Box mt={3}>
-            <Button variant="contained" onClick={handleClickOpen}>
+            <Button
+              variant="contained"
+              onClick={handleClickOpen}
+              data-testid={"article-read-button-" + id}
+            >
               4 Min Read
             </Button>
           </Box>
